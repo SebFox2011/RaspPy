@@ -15,3 +15,18 @@ shift command + P > selectionner sft config et renseigner les champs
     "uploadOnSave": true
 }
 
+Sur le raspberry installer venv
+sudo apt-get install python3-venv
+
+activation de venv
+python3 -m venv venv
+. venv/bin/activate
+
+INstaller Flask
+pip install Flask
+
+## Configuration
+
+export FLASK_APP=application.py
+flask run --host=0.0.0.0
+
