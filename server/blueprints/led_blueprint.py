@@ -4,52 +4,49 @@ from threading import Thread
 
 bp_led = Blueprint('led', __name__, url_prefix='/led')
 Led.initialize()
+
+leds = {
+    'red' : Led(15),
+    'green' : Led(18)
+}
+
 @bp_led.route('/red', methods=["GET"])
 def LedBlinkRed():
-    redLed = Led(15)
-    redLed.asyncBlink(10,0.25)
+    leds['red'].asyncBlink(10,0.25)
     return redirect('/') 
 
 @bp_led.route('/green', methods=["GET"])
 def LedBlinkGreen():   
-    greenLed = Led(18)
-    greenLed.asyncBlink(50,0.05)
+    leds['green'].asyncBlink(50,0.05)
     return redirect('/') 
 
 @bp_led.route('/gr/on', methods=["GET"])
 def LedGreenOn():   
-    greenLed = Led(18)
-    greenLed.on()
+    leds['green'].on()
     return redirect('/') 
 
 @bp_led.route('/gr/off', methods=["GET"])
 def LedGreenOff():   
-    greenLed = Led(18)
-    greenLed.off()
+    leds['green'].off()
     return redirect('/') 
 
 @bp_led.route('/rd/on', methods=["GET"])
 def LedRedOn():   
-    redLed = Led(15)
-    redLed.on()
+    leds['red'].on()
     return redirect('/') 
 
 @bp_led.route('/rd/off', methods=["GET"])
 def LedRedOff():   
-    redLed = Led(15)
-    redLed.off()
+    leds['red'].off()
     return redirect('/') 
 
 # peut remplacer les 4 méthodes précédentes
-@bp_led.route('/on/<int:ledPin>', methods=["GET"])
-def on(ledPin):   
-    redLed = Led(ledPin)
-    redLed.on()
+@bp_led.route('/on/<ledColor>', methods=["GET"])
+def on(ledColor):   
+    leds[ledColor].on()
     return redirect('/') 
 
-@bp_led.route('/off/<int:ledPin>', methods=["GET"])
-def off(ledPin): 
-    redLed = Led(ledPin)
-    redLed.off()
-    
+@bp_led.route('/off/<ledColor>', methods=["GET"])
+def off(ledColor): 
+    leds[ledColor].off()
     return redirect('/') 
