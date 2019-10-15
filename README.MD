@@ -30,3 +30,23 @@ pip install Flask
 export FLASK_APP=application.py
 flask run --host=0.0.0.0
 
+## Capteur de température
+https://raspberry-pi.developpez.com/cours-tutoriels/capteur/mag-pi-utiliser-port-gpio/partie-2-detection-temperature-1-wire/
+
+s'assurer que le script suivant est bien installé sur le raspberry:
+
+#!/bin/sh
+if ! [ $(id -u) = 0 ]; then
+   echo "Ce script doit être éxécuter en tant que root, utilisez la commande sudo pour éxécuter ce script. "
+   exit 1
+fi
+echo "dtoverlay=w1-gpio" | tee -a /boot/config.txt
+echo "wire" | tee -a /etc/modules
+echo "w1-gpio" | tee -a /etc/modules
+echo "w1-therm" | tee -a /etc/modules
+echo "1wire activé ! (au prochain reboot) "
+
+exécuter ensuite les commandes suivantes
+nano 1-wire.sh
+chmod u+x 1-wire.sh 
+sudo ./1-wire.sh

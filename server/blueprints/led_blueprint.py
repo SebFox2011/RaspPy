@@ -49,4 +49,4 @@ def on(ledColor):
 @bp_led.route('/off/<ledColor>', methods=["GET"])
 def off(ledColor): 
     leds[ledColor].off()
-    return redirect('/') 
+    return redirect('/')
