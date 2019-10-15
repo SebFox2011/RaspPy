@@ -1,9 +1,10 @@
 from flask import Flask
 from flask import render_template  # jinja2
-from led import clignote
-from threading import Thread
+
+from blueprints.led_blueprint import bp_led
 
 app = Flask(__name__)
+app.register_blueprint(bp_led)
 
 @app.route('/')
 def index():
@@ -11,7 +12,3 @@ def index():
 
 if __name__ == '__main__':
     app.run()
-thread = Thread(target = clignote)
-thread.start()
-#thread.join()
-print("thread lancé")
