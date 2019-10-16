@@ -1,9 +1,10 @@
 from flask import Blueprint, redirect, render_template, request, url_for
 from classes.led import Led
 from threading import Thread
+from classes.GPIO import GPIO_initialize
 
 bp_led = Blueprint('led', __name__, url_prefix='/led')
-Led.initialize()
+GPIO_initialize()
 
 leds = {
     'red' : Led(15),

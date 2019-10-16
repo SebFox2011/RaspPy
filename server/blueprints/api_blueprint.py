@@ -1,5 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, url_for,jsonify
-from classes.temperature import Temperature
+from classes.temperature import Sensor
+from classes.light import lightSensor
 
 bp_api = Blueprint('api', __name__, url_prefix='/api')
 
@@ -8,12 +9,23 @@ temps = {
     'fahrenheit' : 0
 }
 
-temp = Temperature ('28-01131a4f0da1')
-temp.initialise()
+luminosite = {
+    'day': ''
+}
+
 
 @bp_api.route('/temperature', methods=["GET"])
 def readTemp():
-    temps ['celsius'] = temp.read_temp()
-    temps['fahrenheit'] = temp.read_tempF()
+    temps ['celsius'] = Sensor.read_temp()
+    temps['fahrenheit'] = Sensor.read_tempF()
     return jsonify(temps) 
+
+
+@bp_api.route('/luminosite', methods=["GET"])
+def readlight():
+    if lightSensor.read_light() > 150:
+        luminosite['day'] = 'nuit'
+    else:
+        luminosite['day'] = 'jour'
+    return jsonify(luminosite['day'])
 

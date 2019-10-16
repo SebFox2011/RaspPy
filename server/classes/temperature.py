@@ -4,7 +4,7 @@ import glob
 import time
 
 
-class Temperature:
+class TemperatureSensor:
     def __init__(self,identifiant):
         self.online = True
         # Chemin du fichier contenant la température (remplacer par votre valeur trouvée précédemment)
@@ -48,7 +48,9 @@ class Temperature:
         # Intialisation des broches
         os.system('modprobe w1-gpio')  # Allume le module 1wire
         os.system('modprobe w1-therm')  # Allume le module Temperature
-            
+
+TemperatureSensor.initialise()           
+Sensor = TemperatureSensor ('28-01131a4f0da1')
 # On affiche la temérature tant que le script tourne
 #while True:
     #print(temp.read_temp())

@@ -17,4 +17,14 @@ function getTemp() {
     });
 }
 
+function getLuminosite() {
+    getURL('/api/luminosite', function (result) {
+        var response = JSON.parse(result);
+        document.getElementById('luminosite').innerText=response;
+        console.log(response);
+        response === "jour" ? document.body.style.backgroundColor = 'white' : document.body.style.backgroundColor = 'blue';        
+    });
+}
+
 setInterval(getTemp, 2000);
+setInterval(getLuminosite, 2000);

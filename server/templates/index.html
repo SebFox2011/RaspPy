@@ -11,11 +11,13 @@
     <title>RaspPy</title>
 </head>
 
+
 <body>
+
     <div class="container">
         <div class="row">
             <h1>RaspPy</h1>
-        </div>     
+        </div>
         <div class="row">
             <a class="btn btn-danger" href="/led/red">Led rouge </a>
             <a class="btn btn-success" href="/led/green">Led verte</a>
@@ -34,7 +36,15 @@
             <hr>
         </div>
         <div class="row">
-            <h1>Temperature <span id='tempC' class="badge badge-pill badge-primary">{{ temp.read_temp() }} °C </span><span id='tempF' class="badge badge-pill badge-dark">{{ temp.read_tempF() }} °F</span></h2>
+            <h1>Temperature <span id='tempC' class="badge badge-pill badge-primary">{{ temp.read_temp() }} °C
+                </span><span id='tempF' class="badge badge-pill badge-dark">{{ temp.read_tempF() }} °F</span></h1>
+        </div>
+        <div>
+            <hr>
+        </div>
+        <div class="row">
+            <h1>Luminosité <span id='luminosite'
+                    class="badge badge-pill badge-primary">{{luminosite.read_light()}}</span></h1>
         </div>
     </div>
 
