@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> si besoin :)-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Hello</title>
+    <title>RaspPy</title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Hello World</h1>
+        <div class="row">
+            <h1>RaspPy</h1>
+        </div>     
         <div class="row">
             <a class="btn btn-danger" href="/led/red">Led rouge </a>
             <a class="btn btn-success" href="/led/green">Led verte</a>
@@ -31,10 +34,11 @@
             <hr>
         </div>
         <div class="row">
-            <h1>Temperature <span class="badge badge-pill badge-primary">{{ temp.read_temp() }} °C </span><span class="badge badge-pill badge-dark">{{ temp.read_tempF() }} °F</span></h2>
-            
+            <h1>Temperature <span id='tempC' class="badge badge-pill badge-primary">{{ temp.read_temp() }} °C </span><span id='tempF' class="badge badge-pill badge-dark">{{ temp.read_tempF() }} °F</span></h2>
         </div>
     </div>
+
+    <script src="/static/readtemp.js"></script>
 </body>
 
 </html>
