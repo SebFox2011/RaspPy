@@ -11,22 +11,29 @@
 </head>
 
 <body>
-    <div class="container m=10">
+    <div class="container">
         <h1>Hello World</h1>
         <div class="row">
-        <a class="btn btn-danger" href="/led/red">Led rouge </a>
-        <a class="btn btn-success" href="/led/green">Led verte</a>
-        <a class="btn btn-light" href="/led/rd/on">Led rouge on </a>
-        <a class="btn btn-light" href="/led/rd/off">Led rouge off</a>
-        <a class="btn btn-light" href="/led/gr/on">Led verte on </a>
-        <a class="btn btn-light" href="/led/gr/off">Led verte off</a>
-    </div>
-    <div class="row">
-        <a class="btn btn-light" href="/led/on/red">Led rouge on </a>
-        <a class="btn btn-light" href="/led/off/red">Led rouge off</a>
-        <a class="btn btn-light" href="/led/on/green">Led verte on </a>
-        <a class="btn btn-light" href="/led/off/green">Led verte off</a>
-    </div>
+            <a class="btn btn-danger" href="/led/red">Led rouge </a>
+            <a class="btn btn-success" href="/led/green">Led verte</a>
+            <a class="btn btn-light" href="/led/rd/on">Led rouge on </a>
+            <a class="btn btn-light" href="/led/rd/off">Led rouge off</a>
+            <a class="btn btn-light" href="/led/gr/on">Led verte on </a>
+            <a class="btn btn-light" href="/led/gr/off">Led verte off</a>
+        </div>
+        <div class="row">
+            <a class="btn btn-light" href="/led/on/red">Led rouge on </a>
+            <a class="btn btn-light" href="/led/off/red">Led rouge off</a>
+            <a class="btn btn-light" href="/led/on/green">Led verte on </a>
+            <a class="btn btn-light" href="/led/off/green">Led verte off</a>
+        </div>
+        <div>
+            <hr>
+        </div>
+        <div class="row">
+            <h1>Temperature <span class="badge badge-pill badge-primary">{{ temp.read_temp() }} °C </span><span class="badge badge-pill badge-dark">{{ temp.read_tempF() }} °F</span></h2>
+            
+        </div>
     </div>
 </body>
 

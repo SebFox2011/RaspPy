@@ -31,6 +31,10 @@ class Temperature:
             temp_string = lines[1][equals_pos+2:]
             temp_c = float(temp_string) / 1000.0
             return temp_c
+    # Lis la temperature Fahrentheit
+    def read_tempF(self):
+        tempF = self.read_temp()*9/5 + 32
+        return round(tempF, 3)
     
     @classmethod
     def initialise(cls):
@@ -38,9 +42,7 @@ class Temperature:
         os.system('modprobe w1-gpio')  # Allume le module 1wire
         os.system('modprobe w1-therm')  # Allume le module Temperature
             
-temp = Temperature ('28-01131a4f0da1')
-temp.initialise()
 # On affiche la temérature tant que le script tourne
-while True:
-    print(temp.read_temp())
-    time.sleep(1)
+#while True:
+    #print(temp.read_temp())
+    #time.sleep(1)

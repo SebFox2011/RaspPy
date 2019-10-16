@@ -32,6 +32,7 @@ flask run --host=0.0.0.0
 
 ## Capteur de température
 https://raspberry-pi.developpez.com/cours-tutoriels/capteur/mag-pi-utiliser-port-gpio/partie-2-detection-temperature-1-wire/
+https://datasheets.maximintegrated.com/en/ds/DS18B20.pdf
 
 s'assurer que le script suivant est bien installé sur le raspberry:
 
