@@ -6,19 +6,26 @@ import time
 
 class Temperature:
     def __init__(self,identifiant):
+        self.online = True
         # Chemin du fichier contenant la température (remplacer par votre valeur trouvée précédemment)
         self.device_file = '/sys/bus/w1/devices/'+ str(identifiant) + '/w1_slave'
 
     # Une fonction qui lit dans le fichier température
     def read_temp_raw(self):
-        f = open(self.device_file, 'r')  # Ouvre le fichier
-        lines = f.readlines() # Returns the text
-        f.close()
-        return lines
-        
+        try:
+            f = open(self.device_file, 'r')  # Ouvre le fichier
+            lines = f.readlines() # Returns the text
+            f.close()
+            return lines
+        except:
+            self.online = False
+            return ['', '']
+            
     # Lis la temperature 
     def read_temp(self):
         lines = self.read_temp_raw()  # Lit le fichier de température
+        if not self.online: # On vérifie que le capteur est bien branché, sinon on ne bloque pas la fonction.
+            return 0
         # Tant que la première ligne ne vaut pas 'YES', on attend 0,2s
         # On relis ensuite le fichier
         while lines[0].strip()[-3:] != 'YES':

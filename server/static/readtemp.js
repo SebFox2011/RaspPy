@@ -1,11 +1,20 @@
-function getTemp()
-{
+function getURL(url, success) {
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", '/api/temperature', false ); // false for synchronous request
-    xmlHttp.send( null );
-    response = JSON.parse(xmlHttp.responseText);
-    document.getElementById('tempC').innerText=response.celsius;
-    document.getElementById('tempF').innerText=response.fahrenheit;
+    xmlHttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            success(xmlHttp.responseText);
+        }
+    }
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send();
 }
 
-setInterval(getTemp,2000)
+function getTemp() {
+    getURL('/api/temperature', function (result) {
+        var response = JSON.parse(result);
+        document.getElementById('tempC').innerText=response.celsius;
+        document.getElementById('tempF').innerText=response.fahrenheit;
+    });
+}
+
+setInterval(getTemp, 2000);
