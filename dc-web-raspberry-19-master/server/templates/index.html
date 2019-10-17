@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raspberry Pi</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Raspberry</h1>
+        
+        <div class="row">
+            <div class="col-6 text-center"><a href="/led/on/red" class="btn btn-primary btn-lg">Led Rouge On</a></div>
+            <div class="col-6 text-center"><a href="/led/off/red" class="btn btn-secondary btn-lg">Led Rouge Off</a></div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-center"><a href="/led/on/blue" class="btn btn-primary btn-lg">Led Bleue On</a></div>
+            <div class="col-6 text-center"><a href="/led/off/blue" class="btn btn-secondary btn-lg">Led Bleue Off</a></div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-center"><a href="/led/blink/red" class="btn btn-primary btn-lg">Faire clignoter la led rouge</a></div>
+            <div class="col-6 text-center"><a href="/led/blink/blue" class="btn btn-secondary btn-lg">Faire clignoter la led bleue</a></div>
+        </div>
+        <div class="row">
+            La température est de <span id="temp">{{ sensor.read_temp() }}</span>°C
+        </div>
+        <div id="content"></div>
+		<div>
+			<span id="status">Connexion...</span>
+		</div>
+    </div>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
+
