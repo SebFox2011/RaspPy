@@ -8,11 +8,9 @@
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> si besoin :)-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <title>RaspPy</title>
 </head>
-
-
 <body>
 
     <div class="container">
@@ -38,27 +36,22 @@
         </div>
         <div class="row">
             <h1>Temperature <span id='tempC' class="badge badge-pill badge-primary">{{ temp.read_temp() }} °C
-                </span><span id='tempF' class="badge badge-pill badge-dark">{{ temp.read_tempF() }} °F</span></h1>
+            </span><span id='tempF' class="badge badge-pill badge-dark">{{ temp.read_tempF() }} °F</span></h1>
         </div>
         <div>
             <hr>
         </div>
         <div class="row">
-            <h1>Luminosité <span id='luminosite'
-                    class="badge badge-pill badge-primary">{{luminosite.read_light()}}</span></h1>
+            <h1>Luminosité <span id='luminosite' class="badge badge-pill badge-primary">{{luminosite.read_light()}}</span></h1>
         </div>
-    </div>
-    <div class="row">
-        La température est de <span id="temp">{{ sensor.read_temp() }}</span>°C
     </div>
     <div id="content"></div>
 		<div>
 			<span id="status">Connexion...</span>
-		</div>
-
-    <script src="/static/app.js"></script>
+		</div>   
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script src="/static/app.js"></script>
 </body>
 
 </html>

@@ -50,8 +50,8 @@ class TemperatureSensor:
         os.system('modprobe w1-therm')  # Allume le module Temperature
 
 TemperatureSensor.initialise()           
-Sensor = TemperatureSensor ('28-01131a4f0da1')
+Sensor = TemperatureSensor ('28-021313bf0eaa')
 # On affiche la temérature tant que le script tourne
 #while True:
-    #print(temp.read_temp())
-    #time.sleep(1)
+ #  print(Sensor.read_temp())
+  #  time.sleep(1)

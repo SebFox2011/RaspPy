@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 from led import Led
-from GPIO import GPIO_initialize
+from classes.GPIO import GPIO_initialize
 import time
 from threading import Thread
 
@@ -48,9 +48,9 @@ GPIO_initialize()
 
 led = Led(15)
 
-def detectMovement():
-    led.asyncBlink(5, 0.10)
+#def detectMovement():
+ #   led.asyncBlink(5, 0.10)
 
-movementSensor = Movement(17, detectFunction=detectMovement)
-thread = movementSensor.startDetection()
-thread.join()
+#movementSensor = Movement(17, detectFunction=detectMovement)
+#thread = movementSensor.startDetection()
+##thread.join()

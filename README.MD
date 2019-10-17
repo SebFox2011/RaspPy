@@ -70,3 +70,5 @@ Le copier à la racine de la carte
 ## Utilisation de socket io
 
 pip install flask-socketio
+
+

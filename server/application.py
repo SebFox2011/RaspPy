@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template  # jinja2
 from classes.temperature import Sensor
 from classes.light import lightSensor
+from classes.movement import Movement
 
 from flask_socketio import SocketIO, send, emit
 from threading import Thread
@@ -21,6 +22,24 @@ def index():
 
 if __name__ == '__main__':
     app.run()
+
+
+def detectMovement():
+    socketio.emit('alert', 'Mouvement détécté', Broadcast=True)
+
+movementSensor = Movement(17, detectFunction=detectMovement)
+movementSensor.startDetection()
+
+@app.route('/stop_detector')
+def stopDetector():
+    movementSensor.stopDetection()
+
+@app.route('/start_detector')
+def startDetector():
+    movementSensor.startDetection()
+
+thread = movementSensor.startDetection()
+##thread.join()
 
 def message_loop():
     while True:
