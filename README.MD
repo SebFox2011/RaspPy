@@ -51,3 +51,22 @@ exécuter ensuite les commandes suivantes
 nano 1-wire.sh
 chmod u+x 1-wire.sh 
 sudo ./1-wire.sh
+
+## Modifier la config wifi sur raspi 0
+
+créer un fichier  wpa_supplicant.conf
+
+country=fr
+update_config=1
+ctrl_interface=/var/run/wpa_supplicant
+network={
+ scan_ssid=1
+ ssid="Digital2"
+ psk="DIGITAL2015"
+}
+
+Le copier à la racine de la carte
+
+## Utilisation de socket io
+
+pip install flask-socketio

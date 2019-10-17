@@ -22,9 +22,26 @@ function getLuminosite() {
         var response = JSON.parse(result);
         document.getElementById('luminosite').innerText=response;
         console.log(response);
-        response === "jour" ? document.body.style.backgroundColor = 'white' : document.body.style.backgroundColor = 'blue';        
+        response === "jour" ? document.body.style.backgroundColor = 'white' : document.body.style.backgroundColor = 'black';        
     });
 }
 
 setInterval(getTemp, 2000);
 setInterval(getLuminosite, 2000);
+
+$(function () {
+	socket = io.connect('http://' + document.domain + ':' + location.port);
+	socket.on('connect', function() {
+		$('#status').text('Connecté');
+        socket.emit('client_connected', {data: 'New client!'});
+	});
+
+	socket.on('disconnect', function() {
+		$('#status').text('Déconnecté');
+	});
+
+	socket.on('alert', function (data) {
+        $('#status').text('Connecté');
+        $('#content').append(data + "<br />");
+	});
+});
